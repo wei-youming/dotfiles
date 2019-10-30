@@ -1,0 +1,6 @@
+set completion-ignore-case on
+$if mode=vi
+set editing-mode vi
+set keymap vi
+$endif
+

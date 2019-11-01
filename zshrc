@@ -3,6 +3,7 @@
 
 # Path to your oh-my-zsh installation.
   export ZSH=$HOME/.oh-my-zsh
+source .zplug/init.zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -61,7 +62,7 @@ ZSH_THEME="ys"
 plugins=(
   git
   extract
-  vi-mode
+  #vi-mode
   web-search
   last-working-dir
   zsh-autosuggestions
@@ -105,6 +106,7 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+source ~/.myalias.sh
 # custom setting
 
 # zsh history setting
@@ -161,6 +163,10 @@ export ZLSCOLORS="${LS_COLORS}"
 zmodload zsh/complist
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+
+#eval "$(lua /path/to/z.lua --init bash enhanced once echo)"    # BASH 初始化
+#eval "$(lua /path/to/z.lua --init zsh enhanced once echo)"     # ZSH 初始化
+#eval "$(lua /path/to/z.lua --init posix enhanced once echo)"   # 其他 Posix Shell 初始化
 
 #修正大小写
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
@@ -255,50 +261,43 @@ bindkey "\e\e" sudo-command-line
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=23'
 
 
+export PATH="$PATH:/usr/bin/local/bin"
+export PATH="$PATH:/usr/local/luarocks/bin"
+export PATH="$PATH:/home/wym/opt/eclipse/cpp/eclipse"
 export PATH="$PATH:/home/osily/program/bin"
 export PATH="$PATH:/opt/baidunetdisk/"
 export PATH="$PATH:/usr/share"
 export PATH="$PATH:/usr/local/MATLAB/R2018a/bin"
 export PATH="$PATH:/opt/intel/bin"
 export PATH="$PATH:/opt/intel/compilers_and_libraries_2019.5.281/linux/compiler/include"
+export PATH="$PATH:$HOME/.dynamic-colors/bin"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/compilers_and_libraries_2019.5.281/linux/mkl/lib/intel64_lin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/compilers_and_libraries_2019.5.281/linux/compiler/lib/intel64_lin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/compilers_and_libraries_2019.5.281/linux/compiler/lib/intel64_lin
 
+export NVIM_PYTHON_LOG_FILE=/tmp/log
+export NVIM_PYTHON_LOG_LEVEL=DEBUG
 
 
 
-#exportCLASSPATH="$CLASSPATH:.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib:/home/osily/program/tomcat620/lib:/home/osily/program/tomcat620/lib/servlet-api.jar"
-alias upg="sudo apt-get update && sudo apt-get upgrade"
-alias qq="nohup google-chrome --no-proxy-server --app=http://web.qq.com >/dev/null 2>/dev/null &"
-#alias tomstart="sudo ~/program/tomcat620/bin/startup.sh"
-#alias tomshut="sudo ~/program/tomcat620/bin/shutdown.sh"
-#alias js2="rhino"
-alias gmusic="google-chrome --no-proxy-server --app=http://g.top100.cn/12174704/html/player.html#loaded"
-alias apa="dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P"
-alias mrun="matlab -nodesktop -nosplash -logfile `date +%Y_%m_%d-%H_%M_%S`.log "
-alias cl='clear'
-alias cat='ccat'
-#alias rm='trash'
-#alias rl='trash-list'
-alias chrome='google-chrome-stable'
+zplug "skywind3000/z.lua", defer:2
 
+# Can manage local plugins
+#zplug "~/.zsh", from:local
 
-#命令别名 {{{
+# Load theme file
+#zplug 'dracula/zsh', as:theme
 
-alias -g ls='ls -F --color=auto'
-alias -g ll='ls -l'
-alias -g la='ls -a'
-alias -g vi='vim'
-alias -g l='ls'
-alias -g grep='grep --color=auto'
-#alias -g history='history -fi'
-alias -g ai='sudo apt-get install'
-alias -g aar='sudo apt-get autoremove'
-alias -g aac='sudo apt-get autoclean'
-alias -g ap='sudo apt-get purge'
-alias -g aud='sudo apt-get update'
-alias -g aug='sudo apt-get upgrade'
-alias -g adu='sudo apt-get dist-upgrade'
-alias mc='make clean'
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
 
+# Then, source plugins and add commands to $PATH
+zplug load 
+#zplug load --verbose
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -1,0 +1,114 @@
+# 这个 viminfo 文件是由 Vim 8.0 所产生。
+# 如果想要自行修改请特别小心！
+
+# Viminfo version
+|1,4
+
+# 文件被写的时候 ‘encoding’ 的值
+*encoding=utf-8
+
+
+# hlsearch on (H) or off (h):
+~H
+# 上个 Search 图案：
+~MSle0~/+c
+
+# 查找字符串 历史记录 (从新到旧)：
+?/+c
+|2,1,1568795693,47,"+c"
+?/+e
+|2,1,1568795674,47,"+e"
+?/+j
+|2,1,1568795644,47,"+j"
+?/+h
+|2,1,1568795626,47,"+h"
+?/focus
+|2,1,1568795521,47,"focus"
+
+# 表达式 历史记录 (从新到旧)：
+
+# 输入行 历史记录 (从新到旧)：
+
+# Debug Line 历史记录 (从新到旧)：
+
+# 寄存器:
+""0	LINE	0
+	#*********************************************电源管理*************************************
+	set $mode_system  lock(L) logout(O) reboot(R) shutdown(S) exit(Esc)
+	bindsym $mod+c mode "$mode_system"
+	mode "$mode_system" {
+		bindsym l exec --no-startup-id i3lock -c '#000000', mode "default"
+		bindsym o exec --no-startup-id i3-msg exit, mode "default"
+		bindsym r exec --no-startup-id systemctl reboot, mode "default"
+		bindsym s exec --no-startup-id systemctl poweroff, mode "default"
+		bindsym Escape mode "default"
+	}
+	
+	
+|3,1,0,1,12,0,1568795700,"#*********************************************电源管理*************************************","set $mode_system  lock(L) logout(O) reboot(R) shutdown(S) exit(Esc)","bindsym $mod+c mode \"$mode_system\"","mode \"$mode_system\" {","	bindsym l exec --no-startup-id i3lock -c '#000000', mode \"default\"","	bindsym o exec --no-startup-id i3-msg exit, mode \"default\"","	bindsym r exec --no-startup-id systemctl reboot, mode \"default\"",>70
+|<"	bindsym s exec --no-startup-id systemctl poweroff, mode \"default\"","	bindsym Escape mode \"default\"","}","",""
+"1	LINE	0
+	bindsym $mod+Return exec urxvt
+|3,0,1,1,1,0,1568795486,"bindsym $mod+Return exec urxvt"
+"-	CHAR	0
+	semicolon
+|3,0,36,0,1,0,1568795616,"semicolon"
+
+# 文件标记:
+'0  125  1  ~/.config/i3/config
+|4,48,125,1,1568795711,"~/.config/i3/config"
+'1  49  14  ~/.config/i3/config
+|4,49,49,14,1568795567,"~/.config/i3/config"
+'2  35  0  ~/.config/i3/config
+|4,50,35,0,1568795489,"~/.config/i3/config"
+
+# 跳转列表 (从新到旧):
+-'  125  1  ~/.config/i3/config
+|4,39,125,1,1568795711,"~/.config/i3/config"
+-'  48  12  ~/.config/i3/config
+|4,39,48,12,1568795653,"~/.config/i3/config"
+-'  59  18  ~/.config/i3/config
+|4,39,59,18,1568795647,"~/.config/i3/config"
+-'  71  0  ~/.config/i3/config
+|4,39,71,0,1568795647,"~/.config/i3/config"
+-'  61  19  ~/.config/i3/config
+|4,39,61,19,1568795626,"~/.config/i3/config"
+-'  49  14  ~/.config/i3/config
+|4,39,49,14,1568795567,"~/.config/i3/config"
+-'  43  0  ~/.config/i3/config
+|4,39,43,0,1568795521,"~/.config/i3/config"
+-'  35  0  ~/.config/i3/config
+|4,39,35,0,1568795489,"~/.config/i3/config"
+-'  1  0  ~/.config/i3/config
+|4,39,1,0,1568795448,"~/.config/i3/config"
+
+# 文件内的标记历史记录 (从新到旧):
+
+> ~/.config/i3/config
+	*	1568795711	0
+	"	125	1
+	^	61	20
+	.	125	0
+	+	33	0
+	+	34	0
+	+	46	13
+	+	47	13
+	+	48	13
+	+	49	13
+	+	58	19
+	+	59	19
+	+	60	19
+	+	61	19
+	+	70	13
+	+	124	0
+	+	125	0
+
+> ~/myi3config
+	*	1568795700	0
+	"	168	0
+
+> ~/.config/i3/-MiniBufExplorer-
+	*	1568795458	0
+	"	1	0
+	.	2	0
+	+	2	0

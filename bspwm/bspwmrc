@@ -1,9 +1,13 @@
 #! /bin/sh
 
 sxhkd &
+fcitx &
 feh --bg-scale ~/Pictures/wallpapers/wallpaper.jpg
+$HOME/.config/polybar/launch.sh &
 
 bspc monitor -d I II III IV V VI VII VIII IX X
+#bspc monitor -d HDMI-1 I II III IV V # VI VII VIII IX X
+#bspc monitor -d HDMI-2 VI VII VIII IX X
 
 bspc config border_width         2
 bspc config window_gap          12

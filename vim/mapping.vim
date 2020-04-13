@@ -34,7 +34,7 @@ nnoremap <leader>p "+p
 nmap <Leader>q :q<CR>			
 
 " 定义快捷键保存当前窗口内容
-nmap <Leader>w :w<CR>
+nmap <Leader>ww :w<CR>
 nmap <Leader>wq :wq<CR>
 
 " 定义快捷键保存所有窗口内容并退出 vim

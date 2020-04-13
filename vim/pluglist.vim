@@ -19,6 +19,7 @@ Plug 'rakr/vim-one'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'liuchengxu/space-vim-theme'
+Plug 'liuchengxu/vista.vim'
 """"""""""""""""""""""""""""""
 "Plug 'liuchengxu/vim-which-key'
 """"""""""""""""""""""""""""""
@@ -55,6 +56,9 @@ Plug 'gregsexton/gitv'
 Plug 'wsdjeg/ChineseLinter.vim'
 Plug 'yianwillis/vimcdoc'
 Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'ryanoasis/vim-devicons'
+
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/LeaderF',{'do':'./install.sh'}

@@ -1,8 +1,9 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"===========================================================================""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 通用设置
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ","      " 定义<leader>键
-set nocompatible         " 设置不兼容原始vi模式
+let g:maplocalleader = "\\"      " 定义<leader>键
+"set nocompatible         " 设置不兼容原始vi模式
 filetype on              " 设置开启文件类型侦测
 filetype plugin on       " 设置加载对应文件类型的插件
 set noeb                 " 关闭错误的提示
@@ -22,11 +23,15 @@ set nrformats=" 00x增减数字时使用十进制
 
 " 相对行号: 行号变成相对，可以用 nj/nk 进行跳转
 set relativenumber number
+
+augroup linenumber
 au FocusLost * :set norelativenumber number
 au FocusGained * :set relativenumber
 " 插入模式下用绝对行号, 普通模式下用相对
 autocmd InsertEnter * :set norelativenumber number
 autocmd InsertLeave * :set relativenumber
+augroup END
+
 function! NumberToggle()
   if(&relativenumber == 1)
     set norelativenumber number
@@ -52,7 +57,8 @@ set nowrap               " 禁止折行
 set backspace=2          " 使用回车键正常处理indent,eol,start等
 set sidescroll=10        " 设置向右滚动字符数
 set scrolloff=4
-set nofoldenable         " 禁用折叠代码
+"set nofoldenable         " 禁用折叠代码
+set foldmethod=syntax
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 代码补全
@@ -85,8 +91,8 @@ set undofile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set viminfo+=!
 " 恢复上次文件打开位置
-set viminfo='10,\"100,:20,%,n~/.viminfo
-au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+set viminfo='10,\"100,:20,%,n~/.nviminfo
+augroup BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -96,29 +102,38 @@ set encoding=utf8
 set langmenu=zh_CN.UTF-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set helplang=cn
-" 设置字体
-"set guifont=Powerline_Consolas:h14:cANSI
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+source ~/dotfiles/nvim/mapping.vim
+source ~/dotfiles/nvim/pluglist.vim
+filetype plugin indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 主题
 set background=dark
-"let g:onedark_termcolors=256
+let g:onedark_termcolors=256
 "colorscheme space_vim_theme
 colorscheme onedark
+"colorscheme palenight
 "colorscheme monokai
+hi Normal ctermfg=252 ctermbg=none
+source ~/dotfiles/nvim/plugsettings.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-source ~/dotfiles/vim/mapping.vim
-source ~/dotfiles/vim/pluglist.vim
-
-filetype plugin indent on
-source ~/dotfiles/vim/plugsettingforvim/plugsettings.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "========================================================================
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 "nnoremap <leader>ez :vsplit $MYZSHRC<cr>
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
-"nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+"set guifont=Hack:h14
+"set guifont=DejaVuSansMono Nerd Font:h14
+let g:python_host_skip_check=1
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_skip_check=1
+let g:python3_host_prog = '/usr/bin/python3'
 "========================================================================
+

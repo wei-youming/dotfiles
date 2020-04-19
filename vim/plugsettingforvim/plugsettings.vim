@@ -31,6 +31,23 @@ let g:airline_right_alt_sep = ''
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"使vimtex默认xelatex为编译器
+
+let g:vimtex_compiler_latexmk_engines = {'_':'-xelatex'}
+
+let g:vimtex_compiler_latexrun_engines ={'_':'xelatex'}
+let g:vimtex_latexmk_options='-pdf -pdflatex="xelatex -synctex=1 \%S \%O" -verbose -file-line-error -interaction=nonstopmode'
+
+
+
+"使vimtex默认zathura为pdf阅读器
+
+let g:vimtex_view_method= 'zathura'
+
+
+"设置可以看到编译提示
+
+let g:vimtex_quickfix_mode=1
 let g:llvepreview_engine='xelatex'.'-src-specials -synctex=1 -interaction=nonstopmode $*'   
 set conceallevel=1
 let g:tex_conceal='abdmg'

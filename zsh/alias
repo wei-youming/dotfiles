@@ -17,7 +17,7 @@ alias chrome='google-chrome-stable'
 
 alias -g ls='ls -F --color=auto'
 alias -g ll='ls -l'
-alias -g la='ls -a'
+alias -g la='ls -la'
 alias -g vi='nvim'
 #alias -g nv='nvim'
 alias -g l='ls'

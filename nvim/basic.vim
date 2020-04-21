@@ -137,3 +137,5 @@ let g:python3_host_skip_check=1
 let g:python3_host_prog = '/usr/bin/python3'
 "========================================================================
 
+nnoremap <leader>ll :VimtexCompile<cr>
+nnoremap <leader>lv :VimtexView<cr>

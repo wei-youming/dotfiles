@@ -170,6 +170,8 @@ nmap ga <Plug>(EasyAlign)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "*""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:tex_flavor='latex'
+let g:vimtex_view_method= 'zathura'
 "let g:vimtex_latexmk_options='-pdf -pdflatex="xelatex -synctex=1 \%S \%O" -verbose -file-line-error -interaction=nonstopmode'
 
 "let g:vimtex_compiler_latexmk = { 
@@ -188,15 +190,14 @@ nmap ga <Plug>(EasyAlign)
 
 "let g:vimtex_compiler_latexrun_engines ={'_':'xelatex'}
 
-"let g:vimtex_view_method= 'zathura'
 
-"let g:vimtex_quickfix_mode=1
+let g:vimtex_quickfix_mode=0
 
 ""let g:vimtex_imaps_leader=';'
 ""let g:vimtex_latexmk_options='-pdf -pdflatex="xelatex -synctex=1 \%S \%O" -verbose -file-line-error -interaction=nonstopmode'
 ""let g:tex_flavor='latex'
-"set conceallevel=1
-"let g:tex_conceal='abdmg'
+set conceallevel=1
+let g:tex_conceal='abdmg'
 
 ""let g:vimtex_view_general_viewer = 'zathura'
 ""let g:vimtex_view_method = 'zathura'

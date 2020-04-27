@@ -1,11 +1,11 @@
 " Add the dein installation directory into runtimepath
-set runtimepath+=~/.local/share/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 set rtp+=~/.fzf
 
-if dein#load_state('~/.local/share/dein')
-  call dein#begin('~/.local/share/dein')
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
 
-  call dein#add('~/.local/share/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
   "call dein#add('wsdjeg/dein-ui.vim')
   call dein#add('haya14busa/dein-command.vim')
   "call dein#add('Shougo/deoplete.nvim')
@@ -18,20 +18,20 @@ if dein#load_state('~/.local/share/dein')
   call dein#add('farmergreg/vim-lastplace')
   call dein#add('ryanoasis/vim-devicons')
 
-  call dein#add('neoclide/coc.nvim',{'rev': 'release'})
+  call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
 
   call dein#add('hiberabyss/NeovimGdb')
   call dein#add('vim-airline/vim-airline')
   call dein#add('vim-airline/vim-airline-themes')
-  "call dein#add('neoclide/mycomment.vim')             "快速开关注释
+  call dein#add('neoclide/mycomment.vim')             "快速开关注释
   call dein#add( 'scrooloose/nerdcommenter')             "快速开关注释
   call dein#add('sbdchd/neoformat')
   call dein#add('sheerun/vim-polyglot')
-  "call dein#add('neomake/neomake')
+  call dein#add('neomake/neomake')
   call dein#add('morhetz/gruvbox')
   call dein#add('lervag/vimtex')
-  call dein#add('xuhdev/vim-latex-live-preview')
-  call dein#add('glacambre/firenvim', { 'hook_post_update': function('firenvim#install') })
+  "call dein#add('xuhdev/vim-latex-live-preview')
+  "call dein#add('glacambre/firenvim', { 'hook_post_update': function('firenvim#install') })
 
   call dein#add('liuchengxu/vista.vim')
   call dein#add('liuchengxu/vim-clap')
@@ -55,6 +55,8 @@ if dein#load_state('~/.local/share/dein')
   call dein#add('sheerun/vim-polyglot')
   "call dein#add('ludovicchabant/vim-gutentags')
 
+  call dein#add ('mbbill/undotree')                       "支持分支撤销
+  call dein#add ('kien/rainbow_parentheses.vim')                       "支持分支撤销
   """"""""""""""""""""""""""""""
   call dein#add('rakr/vim-one')
   call dein#add('joshdick/onedark.vim')

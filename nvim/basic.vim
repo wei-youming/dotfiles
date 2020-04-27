@@ -18,6 +18,7 @@ set cursorline           " 高亮显示当前行
 set whichwrap+=<,>,h,l   " 设置光标键跨行
 set ttimeoutlen=0        " 设置<ESC>键响应时间
 set virtualedit=block,onemore   " 允许光标出现在最后一个字符的后面
+set clipboard+=unnamedplus "使vim 与系统共用剪切板"
 
 set nrformats=" 00x增减数字时使用十进制
 
@@ -72,6 +73,7 @@ set completeopt-=preview " 补全时不显示窗口，只显示补全列表
 set hlsearch            " 高亮显示搜索结果
 set incsearch           " 开启实时搜索功能
 set ignorecase          " 搜索时大小写不敏感
+set smartcase
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 缓存设置
@@ -83,9 +85,11 @@ set autowrite           " 设置自动保存
 set confirm             " 在处理未保存或只读文件的时候，弹出确认
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("persistent_undo")
 " 保存 undo 历史
-set undodir=~/.undo_history/
-set undofile
+    set undodir=$HOME"/.undo_history/"
+    set undofile
+endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -120,6 +124,7 @@ colorscheme onedark
 "colorscheme monokai
 hi Normal ctermfg=252 ctermbg=none
 source ~/dotfiles/nvim/plugsettings.vim
+source ~/dotfiles/nvim/cocplug-settings.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

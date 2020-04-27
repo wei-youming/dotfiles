@@ -20,6 +20,8 @@ nnoremap o zzo
 
 nnoremap O zzO
 
+nnoremap ' `
+
 inoremap <enter> <esc>zza<enter>
 
 " 设置快捷键将选中文本块复制至系统剪贴板

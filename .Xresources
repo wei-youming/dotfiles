@@ -1,8 +1,11 @@
+URxvt.termName:     rxvt-256color
 Xft.dpi:96
 Xft.antialias:true
 Xft.rgba:rgb
 Xft.hinting:true
 Xft.hintstyle:hintslight
+Xft.autohint:   false
+Xft.lcdfilter:  lcddefault
 
 URxvt.loginShell:true
 URxvt.inputMethod:fcitx
@@ -19,86 +22,120 @@ URxvt.scrollTtyKeypress:true
 URxvt.cursorBlink:true
 URxvt.cursorUnderline:false
 
-URxvt.saveLines:100
+URxvt.saveLines:1000
 URxvt.borderLess:false
 
 URxvt.allow_bold:false
-URxvt.font:xft:Monaco:style=Regular:antialias=True:size=16,xft:Source Han Sans CN:style=Regular:size=16
-!URxvt.boldfont:xft:Source Code Pro:style=Regular:antialias=True:size=16,xft:Source Han Sans CN:style=Regular:size=16
+!URxvt.font:xft:Hack Nerd Font Mono:style=Regular:antialias=True:size=16,xft:Source Han Sans CN:style=Regular:size=20
+!URxvt.boldfont:xft:Hack Nerd Font Mono:style=Bold:antialias=True:size=16,xft:Source Han Sans CN:style=Regular:size=20
+URxvt.font:xft:Hack Nerd Font Mono:style=Regular:antialias=True:size=16,xft:Source Han Sans SC:style=Regular:size=20
+URxvt.boldfont:xft:Hack Nerd Font Mono:style=Bold:antialias=True:size=16,xft:Source Han Sans SC:style=Regular:size=20
 
-!URxvt.letterSpace:-1
+URxvt.letterSpace:-1
 !URxvt.inheritPixmap:false
-URxvt.transparent:false
+!URxvt.transparent:false
 URxvt.shading:20
 URxvt.intensityStyles: false
-
-URxvt.perl-ext-common: default,matcher,font-size
+!-*- Perl extensions -*-
+URxvt.perl-ext-common: default,resize-font,tabbedex,selection-to-clipboard,pasta,matcher,keyboard-select
+!URxvt.keysym.M-u:     perl:url-select:select_next
 URxvt.url-launcher: /usr/bin/google-chrome-stable
-URxvt.matcher.button: 1
+!URxvt.url-launcher:   /usr/bin/firefox
+URxvt.underlineURLs:  True
+URxvt.matcher.button: 1 
+URxvt.keysym.M-Escape:perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+! 一定要写全名及大写的C/V,否则无效
+! Shift/Control 顺序无关
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+! 禁用之前的复制粘贴方案
+URxvt.keysym.Control-Meta-c: builtin-string:
+URxvt.keysym.Control-Meta-v: builtin-string:
+
+!URxvt.clipboard.autocopy: true
+
 
 !https://github.com/majutsushi/urxvt-font-size
 URxvt.keysym.C-Up:     font-size:increase
-URxvt.keysym.C-Down:   font-size:decrease
-URxvt.keysym.C-equal:  font-size:reset
+ URxvt.keysym.C-Down:   font-size:decrease
+ URxvt.keysym.C-equal:  font-size:reset
 
 !!######################### Colorscheme settings ########################!
-#define S_base03        #002b36
-#define S_base02        #073642
-#define S_base01        #586e75
-#define S_base00        #657b83
-#define S_base0         #839496
-#define S_base1         #93a1a1
-#define S_base2         #eee8d5
-#define S_base3         #fdf6e3
 
 
-"颜色透明设置"
-URxvt.inheritPixmap:true
+!"颜色透明设置"
+!URxvt.inheritPixmap:true
  
-*background:            S_base03
-*foreground:            S_base0
-*fadeColor:             S_base03
-*cursorColor:           S_base1
-*pointerColorBackground:S_base01
-*pointerColorForeground:S_base1
+rofi.lines: 5
+rofi.font: SauceCodePro Nerd Font Mono Light 18
+rofi.bw: 3
+rofi.loc: 0
+rofi.fixed-num-lines: true
+rofi.terminal: x-terminal-emulator
 
-#define S_yellow        #b58900
-#define S_orange        #cb4b16
-#define S_red           #dc322f
-#define S_magenta       #d33682
-#define S_violet        #6c71c4
-#define S_blue          #268bd2
-#define S_cyan          #2aa198
-#define S_green         #859900
+! Base16 Eighties
+! Scheme: Chris Kempson (http://chriskempson.com)
 
-!! black dark/light
-*color0:                S_base02
-*color8:                S_base03
+#define base00 #2d2d2d
+#define base01 #393939
+#define base02 #515151
+#define base03 #747369
+#define base04 #a09f93
+#define base05 #d3d0c8
+#define base06 #e8e6df
+#define base07 #f2f0ec
+#define base08 #f2777a
+#define base09 #f99157
+#define base0A #ffcc66
+#define base0B #99cc99
+#define base0C #66cccc
+#define base0D #6699cc
+#define base0E #cc99cc
+#define base0F #d27b53
 
-!! red dark/light
-*color1:                S_red
-*color9:                S_orange
+rofi.bc: base09
+rofi.color-enabled: true
+rofi.color-window:  base01, base01, base00
+rofi.color-normal:  base01, base05, base01, base02, base07
+rofi.color-active:  ase01, base0D, base01, base01, base0D
+rofi.color-urgent:  base01, base08, base01, base01, base08
+rofi.separator-style: solid
 
-!! green dark/light
-*color2:                S_green
-*color10:               S_base01
 
-!! yellow dark/light
-*color3:                S_yellow
-*color11:               S_base00
+*foreground:   base05
+#ifdef background_opacity
+*background:   [background_opacity]base00
+#else
+*background:   base00
+#endif
+*cursorColor:  base05
 
-!! blue dark/light
-*color4:                S_blue
-*color12:               S_base0
+*color0:       base00
+*color1:       base08
+*color2:       base0B
+*color3:       base0A
+*color4:       base0D
+*color5:       base0E
+*color6:       base0C
+*color7:       base05
 
-!! magenta dark/light
-*color5:                S_magenta
-*color13:               S_violet
+*color8:       base03
+*color9:       base08
+*color10:      base0B
+*color11:      base0A
+*color12:      base0D
+*color13:      base0E
+*color14:      base0C
+*color15:      base07
 
-!! cyan dark/light
-*color6:                S_cyan
-*color14:               S_base1
-
-!! white dark/light
-*color7:                S_base2
-*color15:               S_base3
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*color16:      base09
+*color17:      base0F
+*color18:      base01
+*color19:      base02
+*color20:      base04
+*color21:      base06b

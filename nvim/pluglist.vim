@@ -34,7 +34,9 @@ if dein#load_state('~/.cache/dein')
   "call dein#add('glacambre/firenvim', { 'hook_post_update': function('firenvim#install') })
 
   call dein#add('liuchengxu/vista.vim')
-  call dein#add('liuchengxu/vim-clap')
+  call dein#add('itchyny/lightline.vim')
+  call dein#add('Yggdroot/LeaderF',{'build':'./install.bat'})
+  "call dein#add('liuchengxu/vim-clap')
   "call dein#add('junegunn/fzf',{'build': 'cd ~/.fzf','./install -all'})
   call dein#add('tweekmonster/startuptime.vim')
 

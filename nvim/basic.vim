@@ -144,3 +144,5 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 nnoremap <leader>ll :VimtexCompile<cr>
 nnoremap <leader>lv :VimtexView<cr>
+
+let $PAGER=''

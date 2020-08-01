@@ -5,15 +5,19 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Created by newuser for 5.4.2
 # !/usr/bin/zsh
+# 让 prompt 在底部
+# printf "\n%.0s" {1..100}
 source ~/.zinit/bin/zinit.zsh
+source ~/.myalias.sh
 
 # 快速目录跳转
-zinit ice lucid wait='1'
+zinit ice lucid wait='0'
 zinit light skywind3000/z.lua
 
 # 语法高亮
-zinit ice lucid wait='0' atinit='zpcompinit'
+zinit ice lucid wait='1' atinit='zpcompinit'
 zinit light zdharma/fast-syntax-highlighting
 
 # 自动建议
@@ -25,12 +29,12 @@ zinit ice lucid wait='0'
 zinit light zsh-users/zsh-completions
 
 # 加载 OMZ 框架及部分插件
-zinit snippet OMZ::lib/completion.zsh
+#zinit snippet OMZ::lib/completion.zsh
 zinit snippet OMZ::lib/history.zsh
 zinit snippet OMZ::lib/key-bindings.zsh
 zinit snippet OMZ::lib/theme-and-appearance.zsh
 zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
-zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
+zinit snippet OMZ::plugins/last-working-dir
 zinit load zdharma/history-search-multi-word
 zinit ice from"gh-r" as"command"
 zinit load junegunn/fzf-bin
@@ -43,24 +47,26 @@ zinit snippet OMZ::plugins/git/git.plugin.zsh
 # 加载 pure 主题
 zinit ice depth=1; 
 zinit light romkatv/powerlevel10k
-#zinit ice pick"async.zsh" src"pure.zsh"
-#zinit light sindresorhus/puret
+
+zinit ice lucid wait='2'
 zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
+zinit ice lucid wait='4'
 zinit snippet OMZ::lib/clipboard.zsh
 zinit ice lucid wait="0" atload="zpcompinit; zpcdreplay"
 zinit snippet OMZ::lib/git.zsh
 
 
+zinit ice lucid wait='2'
 zinit light Aloxaf/fzf-tab
 
-# 加载它们的补全等
-zinit ice mv="*.zsh -> _fzf" as="completion"
-zinit snippet 'https://github.com/junegunn/fzf/blob/master/shell/completion.zsh'
-zinit snippet 'https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh'
-zinit ice as="completion"
-zinit snippet 'https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/fd/_fd'
-zinit ice mv="*.zsh -> _exa" as="completion"
-zinit snippet 'https://github.com/ogham/exa/blob/master/contrib/completions.zsh'
+## 加载它们的补全等
+#zinit ice mv="*.zsh -> _fzf" as="completion"
+#zinit snippet 'https://github.com/junegunn/fzf/blob/master/shell/completion.zsh'
+#zinit snippet 'https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh'
+#zinit ice as="completion"
+#zinit snippet 'https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/fd/_fd'
+#zinit ice mv="*.zsh -> _exa" as="completion"
+#zinit snippet 'https://github.com/ogham/exa/blob/master/contrib/completions.zsh'
 
 # 不需要花里胡哨的 ls，我们有更花里胡哨的 exa
 DISABLE_LS_COLORS=true
@@ -69,11 +75,6 @@ alias ls=exa
 export FZF_DEFAULT_COMMAND='fd --type f'
 # ---- 加载完了 ----
 
-
-if [[ "$TERM" == "screen" ]]; then
-    export TERM=screen-256color
-fi
-source ~/.myalias.sh
 export HISTSIZE=1000000000
 export SAVEHIST=$HISTSIZE
 setopt HIST_IGNORE_DUPS
@@ -95,8 +96,8 @@ setopt PUSHD_IGNORE_DUPS
 ##开启此选项，补全时会直接选中菜单项
 ##setopt MENU_COMPLETE
 
-#autoload -U compinit
-#compinit
+autoload -U compinit
+compinit
 
 ##自动补全缓存
 #zstyle ':completion::complete:*' use-cache on
@@ -131,12 +132,12 @@ setopt PUSHD_IGNORE_DUPS
 ##eval "$(lua /path/to/z.lua --init zsh enhanced once echo)"     # ZSH 初始化
 ##eval "$(lua /path/to/z.lua --init posix enhanced once echo)"   # 其他 Posix Shell 初始化
 
-##修正大小写
-#zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
-##错误校正
-#zstyle ':completion:*' completer _complete _match _approximate
-#zstyle ':completion:*:match:*' original only
-#zstyle ':completion:*:approximate:*' max-errors 1 numeric
+#修正大小写
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+#错误校正
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 ##kill 命令补全
 #compdef pkill=killall
@@ -223,11 +224,15 @@ bindkey "\e\e" sudo-command-line
 # fix zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=23'
 #bindkey -v
+#
+# Uncomment the following line to enable command auto-correction.
+ ENABLE_CORRECTION="true"
 
 export PATH="$PATH:/usr/bin/local/bin"
 export PATH="$PATH:/usr/lib/FinalShell/bin"
 export PATH="$PATH:/usr/local/luarocks/bin"
 export PATH="$PATH:/home/wym/opt/eclipse/cpp/eclipse"
+export PATH="$PATH:/home/wym/opt/bochs/bin"
 export PATH="$PATH:/home/wym/.local/share/matlab"
 export PATH="$PATH:/home/osily/program/bin"
 export PATH="$PATH:/opt/baidunetdisk/"
@@ -237,7 +242,7 @@ export PATH="$PATH:/usr/local/MATLAB/R2018a/bin"
 export PATH="$PATH:/opt/intel/bin"
 export PATH="$PATH:/opt/intel/compilers_and_libraries_2019.5.281/linux/compiler/include"
 export PATH="$PATH:$HOME/.dynamic-colors/bin"
-export PATH="$PATH:/home/wym/opt/anaconda/bin"
+export PATH=/home/wym/opt/anaconda/bin:$PATH
 export PATH="$PATH:/home/wym/opt/ranger/"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/compilers_and_libraries_2019.5.281/linux/mkl/lib/intel64_lin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/compilers_and_libraries_2019.5.281/linux/compiler/lib/intel64_lin

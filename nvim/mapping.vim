@@ -1,10 +1,12 @@
 " 定义快捷键到行首
-"nnoremap fh  0			
+nnoremap gh  ^			
 
 " 定义快捷键到行尾
-"nnoremap fl  $			
+nnoremap gl  $			
              
 "nnoremap dk  <c-u>
+nnoremap K Hzz
+nnoremap J Lzz
 
 "nnoremap dj  <c-d>
 
@@ -21,12 +23,13 @@ nnoremap o zzo
 nnoremap O zzO
 
 nnoremap ' `
+nnoremap ` '
 
 inoremap <enter> <esc>zza<enter>
 
 " 设置快捷键将选中文本块复制至系统剪贴板
 " 设置快捷键将选中文本
-vnoremap <leader>y "+y	
+    vnoremap <leader>y "+y	
 
 
 " 设置快捷键将系统剪贴板内容粘贴至vim
@@ -56,8 +59,8 @@ inoremap jk <Esc>
 "vnoremap jk <Esc>
 
 inoremap jj <Esc>la
-map K <Plug>(expand_region_expand)
-map J <Plug>(expand_region_shrink)
+"map K <Plug>(expand_region_expand)
+"map J <Plug>(expand_region_shrink)
 nnoremap <Leader>; :s/\n//g<CR>
 
 imap <C-h> <left>
@@ -69,7 +72,7 @@ imap <C-k> <up>
 imap <C-l> <right>
 
 " 映射全选+复制 ctrl+a
-map <C-A>   ggVGY	
+"map <C-A>   ggVGY	
 
 "map! <C-A> <Esc>ggVGY
 
@@ -98,6 +101,18 @@ nnoremap <Leader>w- <C-W>-		"减小当前窗口高度(默认是一行)
 nnoremap <Leader>w> <C-W>>		"增加当前窗口宽度(默认是一列)
 nnoremap <Leader>w< <C-W><		"减小当前窗口宽度(默认是一列)
 nnoremap <Leader>w= <C-W>=		"使所有窗口高宽/度度相等
+" buffer 快捷方式
+nnoremap <Leader>bn :bn<CR>
+nnoremap <Leader>bb :bp<CR>
+nnoremap <Leader>bf :bfirst<CR>
+nnoremap <Leader>bl :blast<CR>
+nnoremap <Leader>bc :bwipe<CR>
+
+" 标签页快捷方式
+nnoremap <Leader>tp :tabp<CR>
+nnoremap <Leader>tn :tabn<CR>
+nnoremap <Leader>tc :tabc<CR>
+nnoremap <Leader>to :tabo<CR>
 
 nnoremap<Leader>sj  :bot copen<CR>
 

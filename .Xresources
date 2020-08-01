@@ -6,6 +6,7 @@ Xft.hinting:true
 Xft.hintstyle:hintslight
 Xft.autohint:   false
 Xft.lcdfilter:  lcddefault
+Xcursor.theme: cursor-theme
 
 URxvt.loginShell:true
 URxvt.inputMethod:fcitx
@@ -19,7 +20,8 @@ URxvt.scrollTtyOutput:false
 URxvt.scrollWithBuffer:true
 URxvt.scrollTtyKeypress:true
 
-URxvt.cursorBlink:true
+!URxvt.cursorBlink:true
+URxvt.cursorBlink:false
 URxvt.cursorUnderline:false
 
 URxvt.saveLines:1000
@@ -105,6 +107,8 @@ rofi.color-urgent:  base01, base08, base01, base01, base08
 rofi.separator-style: solid
 
 
+!xTerm.vt100.foreground:white
+!xTerm.vt100.background:black
 *foreground:   base05
 #ifdef background_opacity
 *background:   [background_opacity]base00

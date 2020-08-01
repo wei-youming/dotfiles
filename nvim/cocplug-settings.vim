@@ -38,9 +38,12 @@ let g:neoformat_basic_format_retab = 1
 
 " Enable trimmming of trailing whitespace
 let g:neoformat_basic_format_trim = 1
-nmap <silent> <C-c> <Plug>(coc-cursors-position)
-nmap <silent> <C-d> <Plug>(coc-cursors-word)
-xmap <silent> <C-d> <Plug>(coc-cursors-range)
+"nmap <silent> <C-c> <Plug>(coc-cursors-position)
+"nmap <silent> <C-d> <Plug>(coc-cursors-word)
+"xmap <silent> <C-d> <Plug>(coc-cursors-range)
+nmap <silent> <leader>c <Plug>(coc-cursors-position)
+nmap <silent> <leader>d <Plug>(coc-cursors-word)
+xmap <silent> <leader>d <Plug>(coc-cursors-range)
 " use normal command like `<leader>xi(`
 nmap <leader>x  <Plug>(coc-cursors-operator)
 
@@ -83,7 +86,7 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
+"nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Using CocList
@@ -103,6 +106,7 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent> <space>l  :<C-u>CocList<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -110,7 +114,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " 使用 ;e 切换显示文件浏览，使用 ;a 查找到当前文件位置
 let g:maplocalleader=';'
 "nnoremap <silent> <LocalLeader>e
-nnoremap <silent> <leader>t
+nnoremap <silent> <leader>d
 \ :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()`<CR>
 nnoremap <silent> <Leader>a
 \ :<C-u>Defx -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
@@ -194,3 +198,32 @@ function! s:defx_my_settings() abort
 endfunction
 autocmd FileType defx call s:defx_my_settings()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:coc_explorer_global_presets = {
+\   '.vim': {
+\      'root-uri': '~/.vim',
+\   },
+\   'floating': {
+\      'position': 'floating',
+\   },
+\   'floatingLeftside': {
+\      'position': 'floating',
+\      'floating-position': 'left-center',
+\      'floating-width': 50,
+\   },
+\   'floatingRightside': {
+\      'position': 'floating',
+\      'floating-position': 'left-center',
+\      'floating-width': 50,
+\   },
+\   'simplify': {
+\     'file.child.template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+\   }
+\ }
+
+" Use preset argument to open it
+nmap <space>ed :CocCommand explorer --preset .vim<CR>
+nmap <space>ef :CocCommand explorer --preset floating<CR>
+
+" List all presets
+nmap <space>el :CocList explPresets
+

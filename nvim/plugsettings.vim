@@ -145,9 +145,30 @@ au Syntax * RainbowParenthesesLoadBraces
 "*""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vimtex_compiler_progname = 'nvr'
 let g:tex_flavor='latex'
+let g:vimtex_compiler_latexmk = {
+    \ 'options' : [
+    \   '-xelatex',
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
 let g:vimtex_view_method='zathura'
 let g:vimtex_imaps_leader=';'
 let g:vimtex_quickfix_mode=0
+
+let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_view_general_options_latexmk = '-reuse-instance'
+let g:vimtex_view_general_options
+\ = '-reuse-instance -forward-search @tex @line @pdf'
+\ . ' -inverse-search "' . exepath(v:progpath)
+\ . ' --servername ' . v:servername
+\ . ' --remote-send \"^<C-\^>^<C-n^>'
+\ . ':execute ''drop '' . fnameescape(''\%f'')^<CR^>'
+\ . ':\%l^<CR^>:normal\! zzzv^<CR^>'
+\ . ':call remote_foreground('''.v:servername.''')^<CR^>^<CR^>\""'
+
 set conceallevel=1
 let g:tex_conceal='abdmg'
 ""let g:vimtex_view_general_viewer = 'zathura'
@@ -234,11 +255,11 @@ let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
-let g:Lf_ShortcutF = "<leader>ff"
-noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
-noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+let g:Lf_ShortcutF = "<leader>ss"
+noremap <leader>sb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>sm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>st :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>sl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
 noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
 noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
@@ -249,8 +270,48 @@ noremap go :<C-U>Leaderf! rg --recall<CR>
 " should use `Leaderf gtags --update` first
 let g:Lf_GtagsAutoGenerate = 0
 let g:Lf_Gtagslabel = 'native-pygments'
-noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
-noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+noremap <leader>sr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>sd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>so :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+noremap <leader>sn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+noremap <leader>sp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+
+
+
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+
+"map v <Plug>(expand_region_expand)
+"map V <Plug>(expand_region_shrink)
+"
+"
+"
+let g:clang_format#auto_format_on_insert_leave=1
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "C++11"}
+
+" map to <Leader>cf in C++ code
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+" if you install vim-operator-user
+autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
+" Toggle auto formatting:
+"nmap <Leader>C :ClangFormatAutoToggle<CR>
+autocmd FileType c ClangFormatAutoEnable
+

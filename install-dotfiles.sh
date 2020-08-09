@@ -1,10 +1,10 @@
-#/bin/zsh
-mv ~/.config/bspwm/bspwmrc{,.bak}
-mv ~/.config/sxhkd/sxhkdrc{,.bak}
-mv ~/.config/nvim/init.vim{,.bak}
-ln -sb ~/dotfiles/bspwm/bspwmrc ~/.config/bspwm/
-ln -sb ~/dotfiles/sxhkd/sxhkdrc  ~/.config/sxhkd/
-ln -sb ~/dotfiles/vim/basic.vim ~/.config/nvim/init.vim
+#/bin/bash
+ln -sb ~/dotfiles/bspwm ~/.config/bspwm
+ln -sb ~/dotfiles/sxhkd ~/.config/sxhkd
+ln -sb ~/dotfiles/polybar ~/.config/polybar
+ln -sb ~/dotfiles/nvim ~/.config/nvim
+
 ln -sb ~/dotfiles/zsh/zshrc ~/.zshrc
+ln -sb ~/dotfiles/zsh/alias ~/.myalias
 
 

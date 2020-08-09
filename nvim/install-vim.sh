@@ -7,7 +7,8 @@
 #ln -sb ~/dotfiles/nvim/basic.vim ~/.config/nvim/init.vim
 #ln -sb ~/dotfiles/zsh/zshrc ~/.zshrc
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-sh ./installer.sh ~/.local/share/dein
+#sh ./installer.sh ~/.local/share/dein
+sh ./installer.sh ~/.cache/dein
 
 
 

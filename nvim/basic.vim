@@ -150,8 +150,7 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-"set guifont=Hack:h14
-"set guifont=DejaVuSansMono Nerd Font:h14
+"set guifont=JetBrainsMono:h14
 "let g:python_host_skip_check=1
 "let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_skip_check=1

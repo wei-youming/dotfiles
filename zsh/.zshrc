@@ -273,3 +273,4 @@ export FZF_PREVIEW_COMMAND='[[ $(file --mime {}) =~ binary ]] && echo {} is a bi
 #eval `dircolors ~/.dir_colors`
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export LC_CTYPE=zh_CN.UTF-8

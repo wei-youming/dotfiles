@@ -1,0 +1,50 @@
+search j2=-1
+search dia
+search j2=-1.0
+delete 
+shell q
+search ent
+search Thesis
+search 论文
+search integral
+search integrable
+search txt
+search tlos02
+search tlos2
+search cat
+search cata
+search 固体
+search Entanglement
+search entropy
+searc
+search /thier
+search thier
+search Luttinger
+search boso
+search bosonization
+search momentum
+search mesure
+search entanglement
+search pdf
+search j1=0
+search 013
+search aaa
+search j1=0.0_j2=-0.9
+search j2=-1.1
+rename 10730_070201_220160921701_LW_魏友明.pdf
+search templa
+search 10730
+search 12
+open_with feh
+search Lutting
+search integra
+search XXZ
+search integ
+open_with xchm
+search j1=0.8
+search j2=0.5
+search temp
+open_with%space
+rename 胡敬南.mp4
+delete
+search diff

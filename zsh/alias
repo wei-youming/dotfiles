@@ -36,3 +36,6 @@ alias yd='ydict'
 alias zi='z -i'
 alias zb='z -b'
 alias zc='z -c'
+alias -s pdf=zathura
+alias -s vim=nvim
+alias ra='ranger'

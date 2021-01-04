@@ -3,7 +3,9 @@
 #
 #google
 ctrl + g
-    google-chrome-stable
+	chromium
+    #google-chrome-stable
+	#chromium-browser
 #music
 #ctrl + m
 
@@ -28,6 +30,9 @@ super + Escape
 super + {q,r}
     bspc {quit,wm -r}
 
+#rotate the whole desktop
+super + shift + r
+	bspc node @/ -R 90
 #
 # bspwm hotkeys
 #

@@ -1,120 +1,83 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-# Path to your oh-my-zsh installation.
-  export ZSH=$HOME/.oh-my-zsh
-source .zplug/init.zsh
-
-
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="ys"
-
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-  extract
-  #vi-mode
-  web-search
-  last-working-dir
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-  autojump
-)
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# 256 color
-#if [[ "$TERM" == "screen" ]]; then
-    #export TERM=screen-256color
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  #source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 #fi
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
+# Created by newuser for 5.4.2
+# !/usr/bin/zsh
+# 让 prompt 在底部
+# printf "\n%.0s" {1..100}
+source ~/.zinit/bin/zinit.zsh
 source ~/.myalias.sh
-# custom setting
 
-# zsh history setting
+# 快速目录跳转
+zinit ice lucid wait='0'
+zinit light skywind3000/z.lua
+
+# 语法高亮
+zinit ice lucid wait='1' atinit='zpcompinit'
+zinit light zdharma/fast-syntax-highlighting
+
+# 自动建议
+zinit ice lucid wait="0" atload='_zsh_autosuggest_start'
+zinit light zsh-users/zsh-autosuggestions
+
+# 补全
+zinit ice lucid wait='0'
+zinit light zsh-users/zsh-completions
+
+# 加载 OMZ 框架及部分插件
+#zinit snippet OMZ::lib/completion.zsh
+zinit snippet OMZ::lib/history.zsh
+zinit snippet OMZ::lib/key-bindings.zsh
+zinit snippet OMZ::lib/theme-and-appearance.zsh
+zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
+zinit snippet OMZ::plugins/last-working-dir
+zinit load zdharma/history-search-multi-word
+zinit ice from"gh-r" as"command"
+zinit load junegunn/fzf-bin
+
+zinit snippet OMZP::extract
+
+zinit ice lucid wait='1'
+zinit snippet OMZ::plugins/git/git.plugin.zsh
+
+# 加载 pure 主题
+zinit ice depth=1; 
+zinit light romkatv/powerlevel10k
+
+zinit ice lucid wait='2'
+zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
+zinit ice lucid wait='4'
+zinit snippet OMZ::lib/clipboard.zsh
+zinit ice lucid wait="0" atload="zpcompinit; zpcdreplay"
+zinit snippet OMZ::lib/git.zsh
+
+
+zinit ice lucid wait='2'
+zinit light Aloxaf/fzf-tab
+
+## 加载它们的补全等
+#zinit ice mv="*.zsh -> _fzf" as="completion"
+#zinit snippet 'https://github.com/junegunn/fzf/blob/master/shell/completion.zsh'
+#zinit snippet 'https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh'
+#zinit ice as="completion"
+#zinit snippet 'https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/fd/_fd'
+#zinit ice mv="*.zsh -> _exa" as="completion"
+#zinit snippet 'https://github.com/ogham/exa/blob/master/contrib/completions.zsh'
+
+# 不需要花里胡哨的 ls，我们有更花里胡哨的 exa
+DISABLE_LS_COLORS=true
+alias ls=exa
+# 配置 fzf 使用 fd
+export FZF_DEFAULT_COMMAND='fd --type f'
+# ---- 加载完了 ----
+
 export HISTSIZE=1000000000
 export SAVEHIST=$HISTSIZE
 setopt HIST_IGNORE_DUPS
-
 export HISTFILE=~/.zhistory
 #以附加的方式写入历史纪录
 setopt INC_APPEND_HISTORY
@@ -127,47 +90,47 @@ setopt AUTO_PUSHD
 #相同的历史路径只保留一个
 setopt PUSHD_IGNORE_DUPS
 
-#自动补全功能 {{{
-setopt AUTO_LIST
-setopt AUTO_MENU
-#开启此选项，补全时会直接选中菜单项
-#setopt MENU_COMPLETE
+##自动补全功能 {{{
+#setopt AUTO_LIST
+#setopt AUTO_MENU
+##开启此选项，补全时会直接选中菜单项
+##setopt MENU_COMPLETE
 
 autoload -U compinit
 compinit
 
-#自动补全缓存
-zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path .zcache
-zstyle ':completion:*:cd:*' ignore-parents parent pwd
+##自动补全缓存
+#zstyle ':completion::complete:*' use-cache on
+#zstyle ':completion::complete:*' cache-path .zcache
+#zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
-#自动补全选项
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*' menu select
-zstyle ':completion:*:*:default' force-list always
-zstyle ':completion:*' select-prompt '%SSelect: lines: %L matches: %M [%p]'
+##自动补全选项
+#zstyle ':completion:*' verbose yes
+#zstyle ':completion:*' menu select
+#zstyle ':completion:*:*:default' force-list always
+#zstyle ':completion:*' select-prompt '%SSelect: lines: %L matches: %M [%p]'
 
-zstyle ':completion:*:match:*' original only
-zstyle ':completion::prefix-1:*' completer _complete
-zstyle ':completion:predict:*' completer _complete
-zstyle ':completion:incremental:*' completer _complete _correct
-zstyle ':completion:*' completer _complete _prefix _correct _prefix _match _approximate
+#zstyle ':completion:*:match:*' original only
+#zstyle ':completion::prefix-1:*' completer _complete
+#zstyle ':completion:predict:*' completer _complete
+#zstyle ':completion:incremental:*' completer _complete _correct
+#zstyle ':completion:*' completer _complete _prefix _correct _prefix _match _approximate
 
-#路径补全
-zstyle ':completion:*' expand 'yes'
-zstyle ':completion:*' squeeze-slashes 'yes'
-zstyle ':completion::complete:*' '\\'
+##路径补全
+#zstyle ':completion:*' expand 'yes'
+#zstyle ':completion:*' squeeze-slashes 'yes'
+#zstyle ':completion::complete:*' '\\'
 
-#彩色补全菜单
-eval $(dircolors -b)
-export ZLSCOLORS="${LS_COLORS}"
-zmodload zsh/complist
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+##彩色补全菜单
+#eval $(dircolors -b)
+#export ZLSCOLORS="${LS_COLORS}"
+#zmodload zsh/complist
+#zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+#zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 
-#eval "$(lua /path/to/z.lua --init bash enhanced once echo)"    # BASH 初始化
-#eval "$(lua /path/to/z.lua --init zsh enhanced once echo)"     # ZSH 初始化
-#eval "$(lua /path/to/z.lua --init posix enhanced once echo)"   # 其他 Posix Shell 初始化
+##eval "$(lua /path/to/z.lua --init bash enhanced once echo)"    # BASH 初始化
+##eval "$(lua /path/to/z.lua --init zsh enhanced once echo)"     # ZSH 初始化
+##eval "$(lua /path/to/z.lua --init posix enhanced once echo)"   # 其他 Posix Shell 初始化
 
 #修正大小写
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
@@ -176,25 +139,25 @@ zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
-#kill 命令补全
-compdef pkill=killall
-zstyle ':completion:*:*:kill:*' menu yes select
-zstyle ':completion:*:*:*:*:processes' force-list always
-zstyle ':completion:*:processes' command 'ps -au$USER'
+##kill 命令补全
+#compdef pkill=killall
+#zstyle ':completion:*:*:kill:*' menu yes select
+#zstyle ':completion:*:*:*:*:processes' force-list always
+#zstyle ':completion:*:processes' command 'ps -au$USER'
 
-#补全类型提示分组
-zstyle ':completion:*:matches' group 'yes'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*:options' description 'yes'
-zstyle ':completion:*:options' auto-description '%d'
-zstyle ':completion:*:descriptions' format $'\e[01;33m -- %d --\e[0m'
-zstyle ':completion:*:messages' format $'\e[01;35m -- %d --\e[0m'
-zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found --\e[0m'
-zstyle ':completion:*:corrections' format $'\e[01;32m -- %d (errors: %e) --\e[0m'
+##补全类型提示分组
+#zstyle ':completion:*:matches' group 'yes'
+#zstyle ':completion:*' group-name ''
+#zstyle ':completion:*:options' description 'yes'
+#zstyle ':completion:*:options' auto-description '%d'
+#zstyle ':completion:*:descriptions' format $'\e[01;33m -- %d --\e[0m'
+#zstyle ':completion:*:messages' format $'\e[01;35m -- %d --\e[0m'
+#zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found --\e[0m'
+#zstyle ':completion:*:corrections' format $'\e[01;32m -- %d (errors: %e) --\e[0m'
 
-# cd ~ 补全顺序
-zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'users' 'expand'
-#}}}
+## cd ~ 补全顺序
+#zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'users' 'expand'
+##}}}
 #扩展路径
 #/v/c/p/p => /var/cache/pacman/pkg
 setopt complete_in_word
@@ -260,59 +223,56 @@ bindkey "\e\e" sudo-command-line
 
 # fix zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=23'
-
+#bindkey -v
+#
+# Uncomment the following line to enable command auto-correction.
+ ENABLE_CORRECTION="true"
 
 export PATH="$PATH:/usr/bin/local/bin"
+export PATH="$PATH:/usr/lib/FinalShell/bin"
 export PATH="$PATH:/usr/local/luarocks/bin"
 export PATH="$PATH:/home/wym/opt/eclipse/cpp/eclipse"
+export PATH="$PATH:/home/wym/opt/bochs/bin"
+export PATH="$PATH:/home/wym/.local/share/matlab"
 export PATH="$PATH:/home/osily/program/bin"
 export PATH="$PATH:/opt/baidunetdisk/"
+export PATH="$PATH:/opt/polybar/"
 export PATH="$PATH:/usr/share"
 export PATH="$PATH:/usr/local/MATLAB/R2018a/bin"
 export PATH="$PATH:/opt/intel/bin"
 export PATH="$PATH:/opt/intel/compilers_and_libraries_2019.5.281/linux/compiler/include"
 export PATH="$PATH:$HOME/.dynamic-colors/bin"
+export PATH=/home/wym/opt/anaconda/bin:$PATH
+export PATH="$PATH:/home/wym/opt/ranger/"
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/compilers_and_libraries_2019.5.281/linux/mkl/lib/intel64_lin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/compilers_and_libraries_2019.5.281/linux/compiler/lib/intel64_lin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/compilers_and_libraries_2019.5.281/linux/compiler/lib/intel64_lin
-
 export NVIM_PYTHON_LOG_FILE=/tmp/log
 export NVIM_PYTHON_LOG_LEVEL=DEBUG
+export LANG=zh_CN.UTF-8
+export LC_ALL=zh_CN.UTF-8
+export LC_CTYPE=zh_CN.UTF-8
+export GTK_IM_MODULE="fcitx"
+export QT_IM_MODULE="fcitx"
+export XMODIFIERS="@im=fcitx"
+export _JAVA_AWT_WM_NONREPARENTING=1
+export J2D_D3D=false
+export DISPLAY=:0
+export CPLUS_INCLUDE_PATH=/opt/intel/mkl/include:$CPLUS_INCLUDE_PATH
+export EDIT=nvim
+export EDITOR=nvim
+export SELECTED_EDIT="/usr/bin/neovim"
+export LANG=en_US.UTF-8
+export FZF_DEFAULT_OPTS='--bind ctrl-j:down,ctrl-k:up --preview "[[ $(file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500"'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git . ~/.config /home / '
+export FZF_COMPLETION_TRIGGER='\'
+export FZF_PREVIEW_COMMAND='[[ $(file --mime {}) =~ binary ]] && echo {} is a binary fil
+### End of Zinit's installer chunk
 
-
-
-zplug "skywind3000/z.lua", defer:2
-
-# Can manage local plugins
-#zplug "~/.zsh", from:local
-
-# Load theme file
-#zplug 'dracula/zsh', as:theme
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-# Then, source plugins and add commands to $PATH
-zplug load 
-#zplug load --verbose
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#eval `dircolors ~/.dir_colors`
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
-
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit's installer chunk
+export LC_CTYPE=zh_CN.UTF-8
+export TERM=xterm-256color

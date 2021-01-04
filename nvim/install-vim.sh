@@ -1,15 +1,18 @@
-#/bin/zsh
-#mv ~/.config/bspwm/bspwmrc{,.bak}
-#mv ~/.config/sxhkd/sxhkdrc{,.bak}
-#mv ~/.config/nvim/init.vim{,.bak}
-#ln -sb ~/dotfiles/bspwm/bspwmrc ~/.config/bspwm/
-#ln -sb ~/dotfiles/sxhkd/sxhkdrc  ~/.config/sxhkd/
-#ln -sb ~/dotfiles/nvim/basic.vim ~/.config/nvim/init.vim
-#ln -sb ~/dotfiles/zsh/zshrc ~/.zshrc
+#!/bin/sh
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-#sh ./installer.sh ~/.local/share/dein
 sh ./installer.sh ~/.cache/dein
 
+$CONFIG_DIR=~/.config
+if [-d $CONFIG_DIR/bspwm ]
+then
+  mv $CONFIG_DIR/bspwm/bspwmrc{,.bak}
+else
+  mkdir $CONFIG_DIR/bspwm
+fi
 
-
-
+if [-d $CONFIG_DIR/sxhkd ]
+then
+  mv $CONFIG_DIR/sxhkd/bspwmrc{,.bak}
+else
+  mkdir $CONFIG_DIR/sxhkd
+fi

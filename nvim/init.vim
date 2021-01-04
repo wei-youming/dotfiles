@@ -151,10 +151,10 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 "set guifont=JetBrainsMono:h14
-"let g:python_host_skip_check=1
-"let g:python_host_prog = '/usr/bin/python'
+let g:python_host_skip_check=1
+let g:python_host_prog = '/usr/bin/python2'
 let g:python3_host_skip_check=1
-let g:python3_host_prog = '/usr/bin/python3.6'
+let g:python3_host_prog = '/usr/bin/python3.8'
 "let g:coc_disable_startup_warning=1
 "let g:python3_host_prog = '/home/wym/opt/anaconda/bin/python'
 "========================================================================

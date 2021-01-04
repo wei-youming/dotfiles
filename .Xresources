@@ -28,14 +28,14 @@ URxvt.saveLines:1000
 URxvt.borderLess:false
 
 URxvt.allow_bold:false
-!URxvt.font:xft:Hack Nerd Font Mono:style=Regular:antialias=True:size=16,xft:Source Han Sans CN:style=Regular:size=20
-!URxvt.boldfont:xft:Hack Nerd Font Mono:style=Bold:antialias=True:size=16,xft:Source Han Sans CN:style=Regular:size=20
-URxvt.font:xft:Hack Nerd Font Mono:style=Regular:antialias=True:size=16,xft:Source Han Sans SC:style=Regular:size=20
-URxvt.boldfont:xft:Hack Nerd Font Mono:style=Bold:antialias=True:size=16,xft:Source Han Sans SC:style=Regular:size=20
+!URxvt.font:xft:Hack Nerd Font Mono:style=Regular:antialias=True:size=16,xft:Source Han Sans SC:style=Medium:size=20
+!URxvt.boldfont:xft:Hack Nerd Font Mono:style=Bold:antialias=True:size=16,xft:Source Han Sans SC:style=Bold:size=20
+urxvt.font:xft:Hack Nerd Font Mono:style=Regular:pixelsize=20:antialias=true,xft:WenQuanYi Micro Hei Mono:pixelsize=18:antialias=true
+urxvt.boldFont:xft:Hack Nerd Font Mono:style=Regular:pixelsize=20:Bold:antialias=true,xft:WenQuanYi Micro Hei Mono:pixelsize=18:Bold:antialias=true
 
-URxvt.letterSpace:-1
-!URxvt.inheritPixmap:false
-!URxvt.transparent:false
+URxvt.letterSpace:-2
+URxvt.inheritPixmap:false
+URxvt.transparent:false
 URxvt.shading:20
 URxvt.intensityStyles: false
 !-*- Perl extensions -*-
@@ -71,12 +71,12 @@ URxvt.keysym.C-Up:     font-size:increase
 !"颜色透明设置"
 !URxvt.inheritPixmap:true
  
-rofi.lines: 5
-rofi.font: SauceCodePro Nerd Font Mono Light 18
-rofi.bw: 3
-rofi.loc: 0
-rofi.fixed-num-lines: true
-rofi.terminal: x-terminal-emulator
+!rofi.lines: 5
+!rofi.font: SauceCodePro Nerd Font Mono Light 18
+!rofi.bw: 3
+!rofi.loc: 0
+!rofi.fixed-num-lines: true
+!rofi.terminal: x-terminal-emulator
 
 ! Base16 Eighties
 ! Scheme: Chris Kempson (http://chriskempson.com)
@@ -98,13 +98,13 @@ rofi.terminal: x-terminal-emulator
 #define base0E #cc99cc
 #define base0F #d27b53
 
-rofi.bc: base09
-rofi.color-enabled: true
-rofi.color-window:  base01, base01, base00
-rofi.color-normal:  base01, base05, base01, base02, base07
-rofi.color-active:  ase01, base0D, base01, base01, base0D
-rofi.color-urgent:  base01, base08, base01, base01, base08
-rofi.separator-style: solid
+!rofi.bc: base09
+!rofi.color-enabled: true
+!rofi.color-window:  base01, base01, base00
+!rofi.color-normal:  base01, base05, base01, base02, base07
+!rofi.color-active:  ase01, base0D, base01, base01, base0D
+!rofi.color-urgent:  base01, base08, base01, base01, base08
+!rofi.separator-style: solid
 
 
 !xTerm.vt100.foreground:white

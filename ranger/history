@@ -1,9 +1,3 @@
-search j2=-1
-search dia
-search j2=-1.0
-delete 
-shell q
-search ent
 search Thesis
 search 论文
 search integral
@@ -48,3 +42,9 @@ open_with%space
 rename 胡敬南.mp4
 delete
 search diff
+open_with q
+search 
+open_with s
+search shadow
+open_with vim
+shell udo

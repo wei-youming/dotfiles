@@ -29,7 +29,7 @@ if dein#load_state('~/.cache/dein')
   "call dein#add( 'scrooloose/nerdcommenter')             "快速开关注释
   call dein#add('preservim/nerdcommenter')             "快速开关注释
   call dein#add('sbdchd/neoformat')
-  call dein#add('sheerun/vim-polyglot')
+  "call dein#add('sheerun/vim-polyglot')
   call dein#add('neomake/neomake')
   call dein#add('morhetz/gruvbox')
   call dein#add('lervag/vimtex')

@@ -1,8 +1,9 @@
-#/bin/bash
+#!/bin/zsh
 CONFIG_DIR=~/.config
 for dir in bspwm sxhkd ranger polybar nvim ; do
     if [ -d $CONFIG_DIR/$dir ];then
-        mv $CONFIG_DIR/$dir{,.bak}
+        #mv $CONFIG_DIR/$dir{,.bak}
+        rm $CONFIG_DIR/$dir
     fi
     ln -sb ~/dotfiles/$dir $CONFIG_DIR/$dir
 done

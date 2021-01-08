@@ -6,11 +6,9 @@ alias qq="nohup google-chrome --no-proxy-server --app=http://web.qq.com >/dev/nu
 alias gmusic="google-chrome --no-proxy-server --app=http://g.top100.cn/12174704/html/player.html#loaded"
 alias apa="dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P"
 alias mrun="matlab -nodesktop -nosplash -logfile `date +%Y_%m_%d-%H_%M_%S`.log "
-alias cl='clear'
 #alias cat='ccat'
 alias rm='trash'
 alias rl='trash-list'
-alias chrome='google-chrome-stable'
 
 
 #命令别名 {{{

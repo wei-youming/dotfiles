@@ -1,5 +1,3 @@
-search Thesis
-search 论文
 search integral
 search integrable
 search txt
@@ -48,3 +46,5 @@ open_with s
 search shadow
 open_with vim
 shell udo
+open_with wps
+open_with libreoffice
